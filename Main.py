@@ -28,13 +28,25 @@ class LinkedList:
         Insert node at end of the list
         :param data: integer data that will be used to create a node
         """
-        # Write code here
+        new_node = Node(data)
+        if self.head is None:
+            self.head = new_node
+        else:
+            n = self.head
+            while n.ref is not None:
+                n = n.ref
+            n.ref = new_node
 
     def status(self):
         """
         It prints all the elements of list.
         """
-        # write code here
+        elements = []
+        current = self.head
+        while current is not None:
+            elements.append(current.data)
+            current = current.next
+        print(elements)
 
 
 class Solution:
@@ -47,7 +59,22 @@ class Solution:
         :param second_list: Linkedlist with non-negative integers
         :return: returns the sum as a linked list
         """
-        # Write code here
+        def addTwoNumbers(self, first_list: Optional[LinkedList], second_list: Optional[LinkedList]) -> Optional[LinkedList]:
+        result = self.get_num(first_list) + self.get_num(second_list)
+        sum_list = LinkedList()
+        for digit in list(map(int, str(result)[::-1])):
+            sum_list.insert_at_end(digit)
+        return sum_list
+
+    def get_num(self, l: Optional[LinkedList]) -> int:
+        curr = l.head
+        if curr is None:
+            return 0
+        num = ""
+        while curr is not None:
+            num = str(curr.data) + num
+            curr = curr.next
+        return int(num)
         
         
 
