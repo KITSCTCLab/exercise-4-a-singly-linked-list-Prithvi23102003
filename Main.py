@@ -1,46 +1,29 @@
 from typing import Optional
-
-
 class Node:
-    """
-    Provide necessary documentation
-    """
     def __init__(self, data=None, next=None):
         """
-        Provide necessary documentation
+        Initialises the Node with given attributes
         """
         self.data = data
         self.next = next
 
-
 class LinkedList:
-    """
-    Provide necessary documentation
-    """
     def __init__(self):
         """
         Initialize the head
         """
         self.head = None
-
     def insert_at_end(self, data):
-        """
-        Insert node at end of the list
-        :param data: integer data that will be used to create a node
-        """
-        new_node = Node(data)
-        if self.head is None:
-            self.head = new_node
+        new = Node(data, None)
+        current = self.head
+        if current is None:
+            self.head = new
         else:
-            n = self.head
-            while n.next is not None:
-                n = n.next
-            n.next = new_node
+            while current.next is not None:
+                current = current.next
+            current.next = new
 
     def status(self):
-        """
-        It prints all the elements of list.
-        """
         elements = []
         current = self.head
         while current:
@@ -48,18 +31,8 @@ class LinkedList:
             current = current.next
         print(elements)
 
-
 class Solution:
-    """
-    Provide necessary documentation
-    """
     def addTwoNumbers(self, first_list: Optional[LinkedList], second_list: Optional[LinkedList]) -> Optional[LinkedList]:
-        """
-        :param first_list: Linkedlist with non-negative integers
-        :param second_list: Linkedlist with non-negative integers
-        :return: returns the sum as a linked list
-        """
-        def addTwoNumbers(self, first_list: Optional[LinkedList], second_list: Optional[LinkedList]) -> Optional[LinkedList]:
         result = self.get_num(first_list) + self.get_num(second_list)
         sum_list = LinkedList()
         for digit in list(map(int, str(result)[::-1])):
@@ -75,10 +48,8 @@ class Solution:
             num = str(curr.data) + num
             curr = curr.next
         return int(num)
-        
-        
 
-# Do not edit the following code      
+# Do not edit the following code     
 # Create an instance for LinkedList
 first_list = LinkedList()
 # Create an another instance for LinkedList
