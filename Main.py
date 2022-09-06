@@ -43,7 +43,7 @@ class LinkedList:
         """
         elements = []
         current = self.head
-        while current is not None:
+        while current:
             elements.append(current.data)
             current = current.next
         print(elements)
